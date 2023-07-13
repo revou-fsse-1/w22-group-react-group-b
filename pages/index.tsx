@@ -1,14 +1,14 @@
 import React from "react";
 import Home from "./components/Home";
-import About from "./About";
+import Contact from "./Contact";
 import logo from "../public/recipeslogo.png";
 const Index = () => {
-	return (
-		<div>
-			<Home logo={logo} />
-			<About />
-		</div>
-	);
+  return (
+    <div>
+      <Home logo={logo} />
+      <Contact />
+    </div>
+  );
 };
 
 export default Index;
