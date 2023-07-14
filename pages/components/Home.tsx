@@ -14,14 +14,14 @@ const Navbar = ({ logo }: NavbarProps) => {
     scroll.scrollToTop();
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openLoginModal = () => {
+    setLoginModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeLoginModal = () => {
+    setLoginModalOpen(false);
   };
 
   return (
@@ -70,14 +70,8 @@ const Navbar = ({ logo }: NavbarProps) => {
             </li>
 
             <li>
-              <ScrollLink
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                onClick={scrollToTop}
-                href="#"
+              <a
+                onClick={openLoginModal}
                 className="cursor-pointer contact"
                 style={{
                   color: "#181823",
@@ -103,7 +97,7 @@ const Navbar = ({ logo }: NavbarProps) => {
                 }}
               >
                 Login
-              </ScrollLink>
+              </a>
             </li>
           </ul>
         </div>
@@ -148,6 +142,14 @@ const Navbar = ({ logo }: NavbarProps) => {
           </div>
         </div>
       </nav>
+
+      <Modal
+        isOpen={isLoginModalOpen}
+        onRequestClose={closeLoginModal}
+        contentLabel="Login Modal"
+      >
+        <Login />
+      </Modal>
     </div>
   );
 };
