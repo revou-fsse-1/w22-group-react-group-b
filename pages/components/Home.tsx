@@ -4,15 +4,17 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import Login from "../Login";
 import Modal from "react-modal";
+import SlidingImage from "./slidingImage";
 
 interface NavbarProps {
-  logo: StaticImageData;
+	logo: StaticImageData;
 }
 
 const Navbar = ({ logo }: NavbarProps) => {
-  const scrollToTop = () => {
-    scroll.scrollToTop();
-  };
+	const scrollToTop = () => {
+		scroll.scrollToTop();
+	};
+
 
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
@@ -24,50 +26,52 @@ const Navbar = ({ logo }: NavbarProps) => {
     setLoginModalOpen(false);
   };
 
-  return (
-    <div className="bg-white p-10">
-      <nav className="bg-yellow-200 h-screen rounded-xl">
-        <div className="flex items-center justify-between">
-          <div>
-            <Image src={logo} alt="Logo" width={200} height={200} />
-          </div>
-          <ul className="flex px-10 gap-10">
-            <li>
-              <ScrollLink
-                to="contact"
-                spy={true}
-                smooth={true}
-                offset={-70}
-                duration={500}
-                onClick={scrollToTop}
-                href="#"
-                className="cursor-pointer contact"
-                style={{
-                  color: "#181823",
-                  backgroundColor: "#F5F5F5",
-                  display: "block",
-                  padding: "8px",
-                  border: "3px solid black",
-                  boxShadow: "5px -5px 0 0px black",
-                  position: "relative",
-                  top: "0",
-                  left: "0",
-                  transition: "box-shadow 1s, left 1s, top 1s",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = "0 0 0 -3px white";
-                  e.currentTarget.style.top = "-10px";
-                  e.currentTarget.style.left = "10px";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = "5px -5px 0 0px black";
-                  e.currentTarget.style.top = "0";
-                  e.currentTarget.style.left = "0";
-                }}
-              >
-                Contact
-              </ScrollLink>
-            </li>
+
+	return (
+		<div className="bg-white p-10">
+			<nav className="bg-yellow-200 h-screen rounded-xl">
+				<div className="flex items-center justify-between">
+					<div>
+						<Image src={logo} alt="Logo" width={200} height={200} />
+					</div>
+					<ul className="flex px-10 gap-10">
+						<li>
+							<ScrollLink
+								to="contact"
+								spy={true}
+								smooth={true}
+								offset={-70}
+								duration={500}
+								onClick={scrollToTop}
+								href="#"
+								className="cursor-pointer contact"
+								style={{
+									color: "#181823",
+									backgroundColor: "#F5F5F5",
+									display: "block",
+									padding: "8px",
+									border: "3px solid black",
+									boxShadow: "5px -5px 0 0px black",
+									position: "relative",
+									top: "0",
+									left: "0",
+									transition: "box-shadow 1s, left 1s, top 1s",
+								}}
+								onMouseEnter={(e) => {
+									e.currentTarget.style.boxShadow = "0 0 0 -3px white";
+									e.currentTarget.style.top = "-10px";
+									e.currentTarget.style.left = "10px";
+								}}
+								onMouseLeave={(e) => {
+									e.currentTarget.style.boxShadow = "5px -5px 0 0px black";
+									e.currentTarget.style.top = "0";
+									e.currentTarget.style.left = "0";
+								}}
+							>
+								Contact
+							</ScrollLink>
+						</li>
+
 
             <li>
               <a
