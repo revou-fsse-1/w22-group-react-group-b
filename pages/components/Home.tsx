@@ -53,7 +53,7 @@ const Navbar = ({ logo }: NavbarProps) => {
                 duration={500}
                 onClick={scrollToTop}
                 href="#"
-                className="cursor-pointer contact"
+                className="cursor-pointer font-Lato"
                 style={{
                   color: "#181823",
                   backgroundColor: "#F5F5F5",
@@ -84,7 +84,7 @@ const Navbar = ({ logo }: NavbarProps) => {
             <li>
               <a
                 onClick={openLoginModal}
-                className="cursor-pointer"
+                className="cursor-pointer font-Lato"
                 style={{
                   color: "#181823",
                   backgroundColor: "#F5F5F5",
@@ -116,7 +116,7 @@ const Navbar = ({ logo }: NavbarProps) => {
         <div className="flex items-center justify-between p-10">
           <div className="w-1/2">
             <h1
-              className="py-2"
+              className="py-2 font-Lato"
               style={{
                 color: "#F5F5F5",
                 fontWeight: 900,
@@ -148,7 +148,7 @@ const Navbar = ({ logo }: NavbarProps) => {
             </p>
             <a
               onClick={openRegisterModal}
-              className="cursor-pointer"
+              className="cursor-pointer font-Lato"
               style={{
                 color: "#181823",
                 backgroundColor: "#F5F5F5",
@@ -173,7 +173,7 @@ const Navbar = ({ logo }: NavbarProps) => {
                 e.currentTarget.style.left = "0";
               }}
             >
-              Registere Here!
+              Register Here!
             </a>
           </div>
           <div className="flex items-center w-1/2">
