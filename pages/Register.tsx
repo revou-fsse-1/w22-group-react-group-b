@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 
-const Login = () => {
-  const handleLogin = () => {
+const Register = () => {
+  const handleRegister = () => {
     // Handle login logic here
   };
 
@@ -45,16 +45,16 @@ const Login = () => {
             <button
               className="bg-yellow-200 hover:bg-yellow-300 text-black py-2 px-4 rounded-xl w-full shadow-xl font-bold"
               type="button"
-              onClick={handleLogin}
+              onClick={handleRegister}
             >
-              Login
+              Register
             </button>
           </form>
         </div>
         <div className="w-1/2 border-l">
           <Image
-            src="/loginpage-img.jpg"
-            alt="Login"
+            src="/registerspage-img.jpg"
+            alt="Register"
             width={500}
             height={500}
             objectFit="content"
@@ -66,4 +66,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
