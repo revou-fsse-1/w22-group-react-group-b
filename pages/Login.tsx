@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 
 const Login = () => {
-  const handleLogin = () => {
-    // Handle login logic here
-  };
+	const handleLogin = () => {
+		// Handle login logic here
+	};
+
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

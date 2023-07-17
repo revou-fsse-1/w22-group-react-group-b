@@ -16,15 +16,9 @@ const Navbar = ({ logo }: NavbarProps) => {
     scroll.scrollToTop();
   };
 
-  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
-
-  const openLoginModal = () => {
-    setLoginModalOpen(true);
-  };
-
-  const closeLoginModal = () => {
-    setLoginModalOpen(false);
-  };
+	const openLoginModal = () => {
+		setLoginModalOpen(true);
+	};
 
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
 

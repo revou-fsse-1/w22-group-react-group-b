@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 const SlidingImage = () => {
 	const [transitionArray, setTransitionArray] = useState([
-		-200, -100, 0, 100, 200, 300, 400,
+		-100, 0, 100, 200, 300, 400, 500,
 	]);
-	const [opacity, setOpacity] = useState([0, 0, 1, 1, 1, 0, 0]);
+	const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
 
 	const images = [
 		"https://i.imgur.com/N6xgNhV.jpeg",
@@ -28,7 +28,6 @@ const SlidingImage = () => {
 				...prevArray.slice(1, transitionArray.length),
 				prevArray[0],
 			]);
-			console.log(transitionArray);
 		}, 3000);
 
 		return () => {
@@ -37,24 +36,25 @@ const SlidingImage = () => {
 	}, [images.length, transitionArray]);
 
 	return (
-		<div
-			className={`sliding-image w-3/5 h-full items-center overflow-x-hidden relative`}
-		>
+		<div className="relative h-[400px] mx-20 overflow-hidden">
 			{images.map((image, index) => {
 				return (
-					<div key={image} className="absolute w-1/3">
-						<Image
-							src={image}
-							alt={`Image  ${index}`}
-							width={1000}
-							height={1000}
-							style={{
-								transform: `translateX(${transitionArray[index]}%)`,
-								transition: `all 1000ms ease`,
-								opacity: `${opacity[index]}`,
-							}}
-						/>
-					</div>
+					<Image
+						src={image}
+						alt={`Image  ${index}`}
+						width={332}
+						height={332}
+						key={image}
+						style={{
+							transform: `translateX(${transitionArray[index]}%)`,
+							transition: `all 1000ms ease`,
+							opacity: `${opacity[index]}`,
+							position: "absolute",
+							width: "332px",
+							top: "0",
+							bottom: "0",
+						}}
+					/>
 				);
 			})}
 		</div>
