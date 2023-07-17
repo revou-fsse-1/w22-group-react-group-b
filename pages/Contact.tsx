@@ -1,6 +1,9 @@
 import React from "react";
 import { Element } from "react-scroll";
 import SlidingImage from "./components/slidingImage";
+import Image from "next/image";
+import whatsappLogo from "../public/whatsapp-logo.png";
+import instagramLogo from "../public/instagram-logo.png";
 
 const Contact = () => {
 	return (
@@ -18,6 +21,20 @@ const Contact = () => {
 							<p>+62 361 123 4567</p>
 							<p>13 Gajahmada Street, Denpasar</p>
 							<p>80112</p>
+							<div className="mt-4 flex flex-row gap-7">
+								<Image
+									src={whatsappLogo}
+									alt="WhatsApp Logo"
+									width={32}
+									height={32}
+								/>
+								<Image
+									src={instagramLogo}
+									alt="Instagram Logo"
+									width={32}
+									height={32}
+								/>
+							</div>
 						</div>
 						<div className="w-1/5">
 							<p className="mb-5">Or, send us a message:</p>
