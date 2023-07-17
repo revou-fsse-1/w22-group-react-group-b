@@ -39,22 +39,25 @@ const SlidingImage = () => {
 		<div className="relative h-[400px] mx-20 overflow-hidden">
 			{images.map((image, index) => {
 				return (
-					<Image
-						src={image}
-						alt={`Image  ${index}`}
-						width={332}
-						height={332}
-						key={image}
-						style={{
-							transform: `translateX(${transitionArray[index]}%)`,
-							transition: `all 1000ms ease`,
-							opacity: `${opacity[index]}`,
-							position: "absolute",
-							width: "332px",
-							top: "0",
-							bottom: "0",
-						}}
-					/>
+					<div key={image}>
+						<Image
+							src={image}
+							alt={`Image  ${index}`}
+							className="rounded-[40px]"
+							width={332}
+							height={332}
+							style={{
+								transform: `translateX(${transitionArray[index]}%)`,
+								transition: `all 1000ms ease`,
+								opacity: `${opacity[index]}`,
+								position: "absolute",
+								width: "300px",
+								top: "0",
+								bottom: "0",
+								padding: "16px",
+							}}
+						/>
+					</div>
 				);
 			})}
 		</div>
