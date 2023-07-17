@@ -190,7 +190,6 @@ const Navbar = ({ logo }: NavbarProps) => {
 						</div>
 					</div>
 				</div>
-				<UploadPhoto />
 			</nav>
 
 			<Modal
