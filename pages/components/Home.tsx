@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import Login from "../Login";
-import Register from "../Register";
+import Login from "./Login";
+import Register from "./Register";
 import Modal from "react-modal";
-import SlidingImage from "./slidingImage";
 
 interface NavbarProps {
 	logo: StaticImageData;

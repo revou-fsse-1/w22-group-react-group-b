@@ -1,9 +1,9 @@
 import React from "react";
 import { Element } from "react-scroll";
-import SlidingImage from "./components/slidingImage";
+import SlidingImage from "./slidingImage";
 import Image from "next/image";
-import whatsappLogo from "../public/whatsapp-logo.png";
-import instagramLogo from "../public/instagram-logo.png";
+import whatsappLogo from "../../public/whatsapp-logo.png";
+import instagramLogo from "../../public/instagram-logo.png";
 
 const Contact = () => {
 	return (

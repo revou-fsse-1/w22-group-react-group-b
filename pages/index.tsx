@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./components/Home";
-import Contact from "./Contact";
+import Contact from "./components/Contact";
 import logo from "../public/recipeslogo.png";
 
 const Index = () => {
