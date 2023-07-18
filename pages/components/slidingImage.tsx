@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 const SlidingImage = () => {
   const [transitionArray, setTransitionArray] = useState([
-    -100, 0, 100, 200, 300, 400, 500, 600,
+    -100, 0, 100, 200, 300, 400, 500,
   ]);
   const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
 
@@ -14,7 +14,6 @@ const SlidingImage = () => {
     "https://i.imgur.com/fo9GRPE.jpeg",
     "https://i.imgur.com/eMRAH69.jpeg",
     "https://i.imgur.com/OJwSq4c.jpeg",
-    "https://i.imgur.com/BLUWLNo.jpeg",
     // Add more image URLs as needed
   ];
 
