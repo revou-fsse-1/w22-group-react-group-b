@@ -1,10 +1,11 @@
 import logo from "../../public/recipeslogo.png";
 import Image from "next/image";
 import { CategoryRecipe } from "../components/Category";
+import { UploadPhoto } from "../components/uploadPhoto";
 export default function Home() {
 	return (
 		<div className="bg-[#1E1E1E] top-0 p-20">
-			<div className="bg-[#FFF59D] px-8">
+			<div className="bg-[#FFF59D] px-8 pb-20">
 				<div className="w-full h-full flex flex-row justify-between items-center ">
 					<Image src={logo} width={160} height={160} alt="logo" />
 					<a

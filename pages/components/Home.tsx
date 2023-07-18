@@ -5,6 +5,7 @@ import { StaticImageData } from "next/image";
 import Login from "./Login";
 import Register from "./Register";
 import Modal from "react-modal";
+import { UploadPhoto } from "./uploadPhoto";
 
 interface NavbarProps {
   logo: StaticImageData;
