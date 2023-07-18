@@ -8,16 +8,6 @@ const SlidingImage = () => {
   ]);
   const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
 
-  const images = [
-    "https://i.imgur.com/NBMN1F3.jpeg",
-    "https://i.imgur.com/E8F5TwR.jpeg",
-    "https://i.imgur.com/kjdXJBF.jpeg",
-    "https://i.imgur.com/0Pln4DY.jpeg",
-    "https://i.imgur.com/fo9GRPE.jpeg",
-    "https://i.imgur.com/eMRAH69.jpeg",
-    "https://i.imgur.com/OJwSq4c.jpeg",
-    // Add more image URLs as needed
-  ];
 
 	const images = [
 		"https://i.imgur.com/NBMN1F3.jpeg",
