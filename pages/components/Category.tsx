@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 export function CategoryRecipe() {
 	const urls = [
 		"https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03140502/hero3-1587x900.jpg",
@@ -19,12 +17,13 @@ export function CategoryRecipe() {
 			</div>
 			<div className="flex flex-col gap-4">
 				{urls.map((url) => {
+					const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${url}');`;
 					return (
 						<div
 							className="rounded-xl text-black flex font-bold text-2xl"
 							key={url}
 							style={{
-								background: `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${url}');`,
+								background: imgURL,
 								backgroundPosition: "center",
 								backgroundRepeat: "no-repeat",
 								backgroundSize: "cover",

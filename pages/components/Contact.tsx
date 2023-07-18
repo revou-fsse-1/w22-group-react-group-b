@@ -4,8 +4,21 @@ import SlidingImage from "./slidingImage";
 import Image from "next/image";
 import whatsappLogo from "../../public/whatsapp-logo.png";
 import instagramLogo from "../../public/instagram-logo.png";
+import { useState } from "react";
 
 const Contact = () => {
+	const [input, setInput] = useState({
+		username: "",
+		email: "",
+		message: "",
+	});
+
+	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+		setInput((prevInput) => ({
+			...prevInput,
+			[event.target.name]: event.target.value,
+		}));
+	}
 	return (
 		<div className="p-10 bg-white text-black">
 			<Element name="contact" className="bg-[#1E1E1E] h-auto py-14">
@@ -41,18 +54,24 @@ const Contact = () => {
 							<div className="flex flex-col gap-4">
 								<input
 									type="text"
+									name="name"
 									placeholder="Name"
 									className="border-b-2 border-black focus:outline-0 w-full"
+									onChange={handleInputChange}
 								/>
 								<input
 									type="text"
+									name="email"
 									placeholder="Email"
 									className="border-b-2 border-black focus:outline-0 w-full"
+									onChange={handleInputChange}
 								/>
 								<input
 									type="text"
+									name="message"
 									placeholder="Message"
 									className="border-b-2 border-black focus:outline-0 w-full"
+									onChange={handleInputChange}
 								/>
 								<button
 									className="cursor-pointer contact"
