@@ -1,7 +1,6 @@
 import logo from "../../public/recipeslogo.png";
 import Image from "next/image";
-import { CategoryRecipe } from "../components/Category";
-import { UploadPhoto } from "../components/uploadPhoto";
+import CategoryRecipe from "../components/Category";
 export default function Home() {
 	return (
 		<div className="bg-[#1E1E1E] top-0 p-20">

@@ -1,4 +1,4 @@
-export function CategoryRecipe() {
+export default function CategoryRecipe() {
 	const urls = [
 		"https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03140502/hero3-1587x900.jpg",
 		"https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03113421/274736630_758930461734311_4153899114601341907_n-448x560.jpg?tr=w-1000",
