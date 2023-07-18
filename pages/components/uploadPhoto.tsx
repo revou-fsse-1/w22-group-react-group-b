@@ -11,7 +11,7 @@ interface PickerOverlayType {
 	filesUploaded: FileUploaded[];
 }
 
-export function UploadPhoto() {
+export default function UploadPhoto() {
 	const [display, setDisplay] = useState(false);
 	const displayButton = () => setDisplay(true);
 	return (
