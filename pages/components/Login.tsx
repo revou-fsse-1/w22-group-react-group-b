@@ -1,10 +1,40 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
-	const handleLogin = () => {
-		// Handle login logic here
+	const APIURL = "http://localhost:4000/auth/login";
+	const router = useRouter();
+
+	const [credentials, setCredentials] = useState({
+		username: "",
+		password: "",
+	});
+
+	const handleLogin = async () => {
+		const response = await fetch(APIURL, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				username: credentials.username,
+				password: credentials.password,
+			}),
+		});
+		const data = await response.json();
+		if (data) {
+			router.push("/home");
+		}
 	};
+
+	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+		setCredentials((prevCredential) => ({
+			...prevCredential,
+			[event.target.name]: event.target.value,
+		}));
+	}
 
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
@@ -29,10 +59,13 @@ const Login = () => {
 					</h1>
 					<form>
 						<div className="mb-4">
-							<label className="block mb-2">Email</label>
+							<label className="block mb-2">Username</label>
 							<input
 								className="w-full border border-gray-300 p-2 rounded-xl"
-								type="email"
+								type="text"
+								name="username"
+								value={credentials.username}
+								onChange={handleInputChange}
 							/>
 						</div>
 						<div className="mb-4">
@@ -40,6 +73,9 @@ const Login = () => {
 							<input
 								className="w-full border border-gray-300 p-2 rounded-xl"
 								type="password"
+								name="password"
+								value={credentials.password}
+								onChange={handleInputChange}
 							/>
 						</div>
 						<button
