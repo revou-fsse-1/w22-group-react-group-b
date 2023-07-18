@@ -3,10 +3,11 @@ import Image from "next/image";
 import arrowLeft from "../../public/arrow-left.svg";
 import arrowRight from "../../public/arrow-right.svg";
 const SlidingImage = () => {
-	const [transitionArray, setTransitionArray] = useState([
-		-100, 0, 100, 200, 300, 400, 500,
-	]);
-	const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
+  const [transitionArray, setTransitionArray] = useState([
+    -100, 0, 100, 200, 300, 400, 500,
+  ]);
+  const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
+
 
 	const images = [
 		"https://i.imgur.com/NBMN1F3.jpeg",
@@ -104,6 +105,7 @@ const SlidingImage = () => {
 			})}
 		</div>
 	);
+
 };
 
 export default SlidingImage;

@@ -7,6 +7,7 @@ import instagramLogo from "../../public/instagram-logo.png";
 import { useState } from "react";
 
 const Contact = () => {
+
 	const [input, setInput] = useState({
 		username: "",
 		email: "",
