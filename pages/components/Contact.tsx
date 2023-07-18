@@ -7,9 +7,8 @@ import instagramLogo from "../../public/instagram-logo.png";
 import { useState } from "react";
 
 const Contact = () => {
-
 	const [input, setInput] = useState({
-		username: "",
+		name: "",
 		email: "",
 		message: "",
 	});
@@ -59,6 +58,7 @@ const Contact = () => {
 									placeholder="Name"
 									className="border-b-2 border-black focus:outline-0 w-full"
 									onChange={handleInputChange}
+									value={input.name}
 								/>
 								<input
 									type="text"
@@ -66,6 +66,7 @@ const Contact = () => {
 									placeholder="Email"
 									className="border-b-2 border-black focus:outline-0 w-full"
 									onChange={handleInputChange}
+									value={input.email}
 								/>
 								<input
 									type="text"
@@ -73,6 +74,7 @@ const Contact = () => {
 									placeholder="Message"
 									className="border-b-2 border-black focus:outline-0 w-full"
 									onChange={handleInputChange}
+									value={input.message}
 								/>
 								<button
 									className="cursor-pointer contact"
