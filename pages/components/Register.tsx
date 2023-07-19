@@ -4,7 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 const Register = () => {
-	const APIURL = "http://localhost:4000/auth/register";
+	const APIURL =
+		"https://expressjs-server-production-934e.up.railway.app/auth/register";
 	const router = useRouter();
 	const [credentials, setCredentials] = useState({
 		username: "",
@@ -31,7 +32,7 @@ const Register = () => {
 		});
 		const data = await response.json();
 		if (data) {
-			router.push("/login");
+			router.push("/");
 		}
 	};
 

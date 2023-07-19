@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-
+import { useRouter } from "next/router";
+import { setCookie } from "cookies-next";
 const Login = () => {
-	const APIURL = "http://localhost:4000/auth/login";
+	const APIURL =
+		"https://expressjs-server-production-934e.up.railway.app/auth/login";
 	const router = useRouter();
 
 	const [credentials, setCredentials] = useState({
@@ -25,6 +26,7 @@ const Login = () => {
 		});
 		const data = await response.json();
 		if (data) {
+			setCookie("token", data.access_token);
 			router.push("/home");
 		}
 	};
