@@ -20,7 +20,7 @@ export default function UploadPhoto({
 			category: string;
 			url: string;
 			ingredients: string[];
-			steps: string[];
+			step: string[];
 		}>
 	>;
 }) {
