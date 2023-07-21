@@ -12,6 +12,7 @@ interface RecipeData {
 	ingredients: string[];
 }
 export default function CategoryRecipe() {
+
 	const [western, setWestern] = useState<RecipeData[]>([]);
 	const [asian, setAsian] = useState<RecipeData[]>([]);
 	const [sweet, setSweet] = useState<RecipeData[]>([]);
