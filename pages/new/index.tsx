@@ -1,13 +1,10 @@
 import { useState } from "react";
 import UploadPhoto from "../components/uploadPhoto";
-import stateStore from "../components/stateStore";
 import { getCookie } from "cookies-next";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 export default function NewRecipe() {
 	const router = useRouter();
-	const { token } = stateStore();
-	console.log(token);
 	const [recipe, setRecipe] = useState({
 		name: "",
 		category: "Western",

@@ -3,9 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { setCookie } from "cookies-next";
-import stateStore from "./stateStore";
 const Login = () => {
-	const { token, setToken } = stateStore();
 	const APIURL =
 		"https://expressjs-server-production-934e.up.railway.app/auth/login";
 	const router = useRouter();
