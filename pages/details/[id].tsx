@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
-import jwt, { JwtPayload } from "jsonwebtoken";
 import Link from "next/link";
 
 interface RecipeData {
