@@ -3,11 +3,10 @@ import Image from "next/image";
 import arrowLeft from "../../public/arrow-left.svg";
 import arrowRight from "../../public/arrow-right.svg";
 const SlidingImage = () => {
-  const [transitionArray, setTransitionArray] = useState([
-    -100, 0, 100, 200, 300, 400, 500,
-  ]);
-  const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
-
+	const [transitionArray, setTransitionArray] = useState([
+		-100, 0, 100, 200, 300, 400, 500,
+	]);
+	const [opacity, setOpacity] = useState([0, 1, 1, 1, 1, 1, 0]);
 
 	const images = [
 		"https://i.imgur.com/NBMN1F3.jpeg",
@@ -60,7 +59,7 @@ const SlidingImage = () => {
 	};
 
 	return (
-		<div className="relative h-[400px] mx-20 overflow-hidden">
+		<div className="relative h-[400px] mx-48 overflow-hidden">
 			<div className="flex flex-row justify-between">
 				<Image
 					src={arrowLeft}
@@ -87,14 +86,14 @@ const SlidingImage = () => {
 							src={image}
 							alt={`Image  ${index}`}
 							className="rounded-[40px] ml-16"
-							width={332}
-							height={332}
+							objectFit="cover"
+							width={256}
+							height={384}
 							style={{
 								transform: `translateX(${transitionArray[index]}%)`,
 								transition: `all 1000ms ease`,
 								opacity: `${opacity[index]}`,
 								position: "absolute",
-								width: "300px",
 								top: "0",
 								bottom: "0",
 								padding: "16px",
@@ -105,7 +104,6 @@ const SlidingImage = () => {
 			})}
 		</div>
 	);
-
 };
 
 export default SlidingImage;
