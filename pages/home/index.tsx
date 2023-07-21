@@ -1,17 +1,24 @@
-"use client";
 import logo from "../../public/recipeslogo.png";
 import Image from "next/image";
 import CategoryRecipe from "../components/Category";
 import Link from "next/link";
+import { deleteCookie, getCookie } from "cookies-next";
+import { useRouter } from "next/router";
 
 export default function Home() {
+	const router = useRouter();
+	const logOutButton = () => {
+		deleteCookie("token");
+		deleteCookie("id");
+		router.push("/");
+	};
 	return (
 		<div className="bg-[#1E1E1E] top-0 p-20">
 			<div className="bg-[#FFF59D] px-8 pb-20 rounded-xl">
 				<div className="w-full h-full flex flex-row justify-between items-center ">
 					<Image src={logo} width={160} height={160} alt="logo" />
 					<a
-						// onClick={openLoginModal}
+						onClick={logOutButton}
 						className="cursor-pointer font-Lato w-fit h-fit items-center"
 						style={{
 							color: "#181823",

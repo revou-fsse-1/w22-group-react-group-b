@@ -12,7 +12,6 @@ interface RecipeData {
 	ingredients: string[];
 }
 export default function CategoryRecipe() {
-
 	const [western, setWestern] = useState<RecipeData[]>([]);
 	const [asian, setAsian] = useState<RecipeData[]>([]);
 	const [sweet, setSweet] = useState<RecipeData[]>([]);
@@ -79,7 +78,7 @@ export default function CategoryRecipe() {
 						return (
 							<Link
 								href={`/details/${data.id}`}
-								className="rounded-xl text-black flex font-bold text-2xl"
+								className="rounded-xl text-black flex font-bold text-2xl text-center"
 								key={data.id}
 								style={{
 									background: imgURL,
@@ -110,7 +109,7 @@ export default function CategoryRecipe() {
 						return (
 							<Link
 								href={`/details/${data.id}`}
-								className="rounded-xl text-black flex font-bold text-2xl"
+								className="rounded-xl text-black flex font-bold text-2xl text-center"
 								key={data.id}
 								style={{
 									background: imgURL,
@@ -141,7 +140,7 @@ export default function CategoryRecipe() {
 						return (
 							<Link
 								href={`/details/${data.id}`}
-								className="rounded-xl text-black flex font-bold text-2xl"
+								className="rounded-xl text-black flex font-bold text-2xl text-center"
 								key={data.id}
 								style={{
 									background: imgURL,
@@ -172,7 +171,7 @@ export default function CategoryRecipe() {
 						return (
 							<Link
 								href={`/details/${data.id}`}
-								className="rounded-xl text-black flex font-bold text-2xl"
+								className="rounded-xl text-black flex font-bold text-2xl text-center"
 								key={data.id}
 								style={{
 									background: imgURL,
@@ -203,7 +202,7 @@ export default function CategoryRecipe() {
 						return (
 							<Link
 								href={`/details/${data.id}`}
-								className="rounded-xl text-black flex font-bold text-2xl"
+								className="rounded-xl text-black flex font-bold text-2xl text-center"
 								key={data.id}
 								style={{
 									background: imgURL,

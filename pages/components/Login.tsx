@@ -29,7 +29,9 @@ const Login = () => {
 		const data = await response.json();
 		if (data) {
 			const tokenString: string = String(await data.access_token);
+			const userID: string = String(await data.userID);
 			setCookie("token", tokenString);
+			setCookie("id", userID);
 			router.push("/home");
 		}
 	};

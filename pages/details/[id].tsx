@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
-import Image from "next/image";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import Link from "next/link";
 
 interface RecipeData {
 	id: number;
@@ -41,11 +42,20 @@ export default function Details() {
 	useEffect(() => {
 		fetchData();
 	}, [id]);
+	console.log(details);
 
 	return (
 		<div className="bg-[#1E1E1E] top-0 p-20 font-Lato text-lg">
 			<div className="bg-white text-black flex flex-col gap-9 pt-8 pl-7">
-				<p className="italic underline text-2xl">{details?.name}</p>
+				<div className="flex flex-row justify-between">
+					<p className="italic underline text-2xl">{details?.name}</p>
+					{Number(getCookie("id")) === details?.userId ? (
+						<Link href={`/edit/${details.id}`}>Edit</Link>
+					) : (
+						""
+					)}
+				</div>
+
 				<div className="flex flex-row flex-wrap gap-7">
 					<img src={details?.imageURL} width={300} height={500} alt="Details" />
 					<ul className="list-disc">
