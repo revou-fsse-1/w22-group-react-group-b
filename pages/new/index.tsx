@@ -3,83 +3,37 @@ import UploadPhoto from "../components/uploadPhoto";
 import stateStore from "../components/stateStore";
 import { getCookie } from "cookies-next";
 import Image from "next/image";
-
+import { useRouter } from "next/navigation";
 export default function NewRecipe() {
-  const { token } = stateStore();
-  console.log(token);
-  const [recipe, setRecipe] = useState({
-    name: "",
-    category: "",
-    url: "",
-    ingredients: ["", ""],
-    step: ["", ""],
-  });
-
-  const addItem = (e: React.SyntheticEvent, arrayName: string) => {
-    e.preventDefault();
-    setRecipe((prevRecipe) => {
-      const newIngredient = [
-        ...prevRecipe[arrayName as keyof typeof prevRecipe],
-        "",
-      ];
-      return {
-        ...prevRecipe,
-        [arrayName]: newIngredient,
-      };
-    });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const arrayName = e.target.name;
-    const index = +e.target.id;
-    setRecipe((prevRecipe) => {
-      if (e.target.name === "category") {
-        const newValue = Array.isArray(e.target.value)
-          ? e.target.value
-          : e.target.value;
-        return { ...prevRecipe, [arrayName]: newValue };
-      }
-      if (Array.isArray(prevRecipe[arrayName as keyof typeof prevRecipe])) {
-        const newArray = [...prevRecipe[arrayName as keyof typeof prevRecipe]];
-        const newValue = Array.isArray(e.target.value)
-          ? e.target.value
-          : e.target.value;
-        newArray[index] = newValue;
-        return { ...prevRecipe, [arrayName]: newArray };
-      } else {
-        const newValue = Array.isArray(e.target.value)
-          ? e.target.value
-          : e.target.value;
-        return { ...prevRecipe, [arrayName]: newValue };
-      }
-    });
-  };
-
-  const handleStringChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRecipe((prevRecipe) => ({
-      ...prevRecipe,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
+	const router = useRouter();
+	const { token } = stateStore();
+	console.log(token);
+	const [recipe, setRecipe] = useState({
+		name: "",
+		category: "",
+		url: "",
+		ingredients: ["", ""],
+		step: ["", ""],
+	});
+  
   const postButton = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    console.log(token);
-    const response = await fetch(
-      "https://expressjs-server-production-934e.up.railway.app/recipe",
-      {
-        method: "POST",
-        headers: {
-          authorization: `Bearer ${getCookie("token")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(recipe),
-      }
-    );
-    await response.json();
-  };
+		e.preventDefault();
+		const response = await fetch(
+			"https://expressjs-server-production-934e.up.railway.app/recipe",
+			{
+				method: "POST",
+				headers: {
+					authorization: `Bearer ${getCookie("token")}`,
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(recipe),
+			}
+		);
+		const data = await response.json();
+		if (data) {
+			router.push("/home");
+		}
+	};
 
   return (
     <div className="flex items-center justify-center">

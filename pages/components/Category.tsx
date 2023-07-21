@@ -1,42 +1,226 @@
-export default function CategoryRecipe() {
-  const urls = [
-    "https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03140502/hero3-1587x900.jpg",
-    "https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03113421/274736630_758930461734311_4153899114601341907_n-448x560.jpg?tr=w-1000",
-    "https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03114128/43560101_263085774392230_9024305128529224908_n-448x560.jpg?tr=w-1000",
-    "https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03114541/240725828_1449890452050815_1043390765394799824_n-559x560.jpg?tr=w-1000",
-    "https://images.lifestyleasia.com/wp-content/uploads/sites/6/2022/03/03115612/210184297_491345631946798_281160842865910469_n-562x560.jpg?tr=w-1000",
-  ];
+import { getCookie } from "cookies-next";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
-  return (
-    <div>
-      <div className="mt-24 flex flex-row items-center font-Lato text-lg">
-        <ul className="w-fit">
-          <li className="w-4 h-4 bg-black rounded-full"></li>
-        </ul>
-        <span className="text-black ml-2">Western</span>
-      </div>
-      <div className="flex flex-col gap-4">
-        {urls.map((url) => {
-          const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${url}');`;
-          return (
-            <div
-              className="rounded-xl text-black flex font-bold text-2xl"
-              key={url}
-              style={{
-                background: imgURL,
-                backgroundPosition: "center",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                height: "100px",
-                width: "320px",
-                backgroundColor: "rgba(236,236,236,0.5)",
-              }}
-            >
-              <p className="w-fit m-auto">ABCD</p>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
+interface RecipeData {
+	id: number;
+	userId: number;
+	name: string;
+	imageURL: string;
+	category: string;
+	step: string[];
+	ingredients: string[];
+}
+export default function CategoryRecipe() {
+
+	const [western, setWestern] = useState<RecipeData[]>([]);
+	const [asian, setAsian] = useState<RecipeData[]>([]);
+	const [sweet, setSweet] = useState<RecipeData[]>([]);
+	const [vegetarian, setVegetarian] = useState<RecipeData[]>([]);
+	const [indonesian, setIndonesian] = useState<RecipeData[]>([]);
+
+	const fetchData = async () => {
+		const response = await fetch(
+			"https://expressjs-server-production-934e.up.railway.app/recipe",
+			{
+				headers: {
+					authorization: `Bearer ${getCookie("token")}`,
+				},
+			}
+		);
+		const data = await response.json();
+		const westernData = new Set();
+		const asianData = new Set();
+		const sweetData = new Set();
+		const indonesianData = new Set();
+		const vegetarianData = new Set();
+		data.response.forEach((d: any) => {
+			if (d.category === "Western") {
+				westernData.add(JSON.stringify(d));
+			} else if (d.category === "Asian") {
+				asianData.add(JSON.stringify(d));
+			} else if (d.category === "Sweets") {
+				sweetData.add(JSON.stringify(d));
+			} else if (d.category === "Indonesian") {
+				indonesianData.add(JSON.stringify(d));
+			} else if (d.category === "Vegetarian") {
+				vegetarianData.add(JSON.stringify(d));
+			}
+		});
+		setWestern(
+			Array.from(westernData).map((item) => JSON.parse(item as string))
+		);
+		setAsian(Array.from(asianData).map((item) => JSON.parse(item as string)));
+		setSweet(Array.from(sweetData).map((item) => JSON.parse(item as string)));
+		setIndonesian(
+			Array.from(indonesianData).map((item) => JSON.parse(item as string))
+		);
+		setVegetarian(
+			Array.from(vegetarianData).map((item) => JSON.parse(item as string))
+		);
+	};
+	const token = getCookie("token");
+
+	useEffect(() => {
+		fetchData();
+	}, [token]);
+	return (
+		<div className="flex flex-row flex-wrap gap-12">
+			<div>
+				<div className="mt-24 flex flex-row items-center font-lato text-lg">
+					<ul className="w-fit">
+						<li className="w-4 h-4 bg-black rounded-full"></li>
+					</ul>
+					<span className="text-black ml-2">Western</span>
+				</div>
+				<div className="flex flex-col gap-4">
+					{western.map((data) => {
+						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
+						return (
+							<Link
+								href={`/details/${data.id}`}
+								className="rounded-xl text-black flex font-bold text-2xl"
+								key={data.id}
+								style={{
+									background: imgURL,
+									backgroundPosition: "center",
+									backgroundRepeat: "no-repeat",
+									backgroundSize: "cover",
+									height: "100px",
+									width: "320px",
+									backgroundColor: "rgba(236,236,236,0.5)",
+								}}
+							>
+								<p className="w-fit m-auto">{data.name}</p>
+							</Link>
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				<div className="mt-24 flex flex-row items-center font-lato text-lg">
+					<ul className="w-fit">
+						<li className="w-4 h-4 bg-black rounded-full"></li>
+					</ul>
+					<span className="text-black ml-2">Asian</span>
+				</div>
+				<div className="flex flex-col gap-4">
+					{asian.map((data) => {
+						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
+						return (
+							<Link
+								href={`/details/${data.id}`}
+								className="rounded-xl text-black flex font-bold text-2xl"
+								key={data.id}
+								style={{
+									background: imgURL,
+									backgroundPosition: "center",
+									backgroundRepeat: "no-repeat",
+									backgroundSize: "cover",
+									height: "100px",
+									width: "320px",
+									backgroundColor: "rgba(236,236,236,0.5)",
+								}}
+							>
+								<p className="w-fit m-auto">{data.name}</p>
+							</Link>
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				<div className="mt-24 flex flex-row items-center font-lato text-lg">
+					<ul className="w-fit">
+						<li className="w-4 h-4 bg-black rounded-full"></li>
+					</ul>
+					<span className="text-black ml-2">Indonesian</span>
+				</div>
+				<div className="flex flex-col gap-4">
+					{indonesian.map((data) => {
+						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
+						return (
+							<Link
+								href={`/details/${data.id}`}
+								className="rounded-xl text-black flex font-bold text-2xl"
+								key={data.id}
+								style={{
+									background: imgURL,
+									backgroundPosition: "center",
+									backgroundRepeat: "no-repeat",
+									backgroundSize: "cover",
+									height: "100px",
+									width: "320px",
+									backgroundColor: "rgba(236,236,236,0.5)",
+								}}
+							>
+								<p className="w-fit m-auto">{data.name}</p>
+							</Link>
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				<div className="mt-24 flex flex-row items-center font-lato text-lg">
+					<ul className="w-fit">
+						<li className="w-4 h-4 bg-black rounded-full"></li>
+					</ul>
+					<span className="text-black ml-2">Sweet</span>
+				</div>
+				<div className="flex flex-col gap-4">
+					{sweet.map((data) => {
+						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
+						return (
+							<Link
+								href={`/details/${data.id}`}
+								className="rounded-xl text-black flex font-bold text-2xl"
+								key={data.id}
+								style={{
+									background: imgURL,
+									backgroundPosition: "center",
+									backgroundRepeat: "no-repeat",
+									backgroundSize: "cover",
+									height: "100px",
+									width: "320px",
+									backgroundColor: "rgba(236,236,236,0.5)",
+								}}
+							>
+								<p className="w-fit m-auto">{data.name}</p>
+							</Link>
+						);
+					})}
+				</div>
+			</div>
+			<div>
+				<div className="mt-24 flex flex-row items-center font-lato text-lg">
+					<ul className="w-fit">
+						<li className="w-4 h-4 bg-black rounded-full"></li>
+					</ul>
+					<span className="text-black ml-2">Vegetarian</span>
+				</div>
+				<div className="flex flex-col gap-4">
+					{vegetarian.map((data) => {
+						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
+						return (
+							<Link
+								href={`/details/${data.id}`}
+								className="rounded-xl text-black flex font-bold text-2xl"
+								key={data.id}
+								style={{
+									background: imgURL,
+									backgroundPosition: "center",
+									backgroundRepeat: "no-repeat",
+									backgroundSize: "cover",
+									height: "100px",
+									width: "320px",
+									backgroundColor: "rgba(236,236,236,0.5)",
+								}}
+							>
+								<p className="w-fit m-auto">{data.name}</p>
+							</Link>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	);
 }
