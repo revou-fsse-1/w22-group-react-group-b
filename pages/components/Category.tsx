@@ -46,11 +46,17 @@ export default function CategoryRecipe() {
 				vegetarianData.add(JSON.stringify(d));
 			}
 		});
-		setWestern(Array.from(westernData).map((item) => JSON.parse(item)));
-		setAsian(Array.from(asianData).map((item) => JSON.parse(item)));
-		setSweet(Array.from(sweetData).map((item) => JSON.parse(item)));
-		setIndonesian(Array.from(indonesianData).map((item) => JSON.parse(item)));
-		setVegetarian(Array.from(vegetarianData).map((item) => JSON.parse(item)));
+		setWestern(
+			Array.from(westernData).map((item) => JSON.parse(item as string))
+		);
+		setAsian(Array.from(asianData).map((item) => JSON.parse(item as string)));
+		setSweet(Array.from(sweetData).map((item) => JSON.parse(item as string)));
+		setIndonesian(
+			Array.from(indonesianData).map((item) => JSON.parse(item as string))
+		);
+		setVegetarian(
+			Array.from(vegetarianData).map((item) => JSON.parse(item as string))
+		);
 	};
 	const token = getCookie("token");
 
@@ -101,7 +107,8 @@ export default function CategoryRecipe() {
 					{asian.map((data) => {
 						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
 						return (
-							<div
+							<Link
+								href={`/details/${data.id}`}
 								className="rounded-xl text-black flex font-bold text-2xl"
 								key={data.id}
 								style={{
@@ -115,7 +122,7 @@ export default function CategoryRecipe() {
 								}}
 							>
 								<p className="w-fit m-auto">{data.name}</p>
-							</div>
+							</Link>
 						);
 					})}
 				</div>
@@ -131,7 +138,8 @@ export default function CategoryRecipe() {
 					{indonesian.map((data) => {
 						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
 						return (
-							<div
+							<Link
+								href={`/details/${data.id}`}
 								className="rounded-xl text-black flex font-bold text-2xl"
 								key={data.id}
 								style={{
@@ -145,7 +153,7 @@ export default function CategoryRecipe() {
 								}}
 							>
 								<p className="w-fit m-auto">{data.name}</p>
-							</div>
+							</Link>
 						);
 					})}
 				</div>
@@ -161,7 +169,8 @@ export default function CategoryRecipe() {
 					{sweet.map((data) => {
 						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
 						return (
-							<div
+							<Link
+								href={`/details/${data.id}`}
 								className="rounded-xl text-black flex font-bold text-2xl"
 								key={data.id}
 								style={{
@@ -175,7 +184,7 @@ export default function CategoryRecipe() {
 								}}
 							>
 								<p className="w-fit m-auto">{data.name}</p>
-							</div>
+							</Link>
 						);
 					})}
 				</div>
@@ -191,7 +200,8 @@ export default function CategoryRecipe() {
 					{vegetarian.map((data) => {
 						const imgURL = `linear-gradient(rgba(236, 236, 236, 0.6), rgba(236, 236, 236, 0.6)), url('${data.imageURL}')`;
 						return (
-							<div
+							<Link
+								href={`/details/${data.id}`}
 								className="rounded-xl text-black flex font-bold text-2xl"
 								key={data.id}
 								style={{
@@ -205,7 +215,7 @@ export default function CategoryRecipe() {
 								}}
 							>
 								<p className="w-fit m-auto">{data.name}</p>
-							</div>
+							</Link>
 						);
 					})}
 				</div>
