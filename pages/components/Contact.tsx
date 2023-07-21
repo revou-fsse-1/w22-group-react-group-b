@@ -22,9 +22,7 @@ const Contact = () => {
   return (
     <div className="p-10 bg-white text-black">
       <Element name="contact" className="bg-[#1E1E1E] h-auto py-14 rounded-xl">
-        <p className="text-white w-fit mx-auto mb-9 text-3xl">
-          Our Recipes Gallery
-        </p>
+        <p className="text-white w-fit mx-auto text-3xl">Our Recipes Gallery</p>
         <SlidingImage />
         <div className="bg-white rounded-xl mx-20 px-14 py-8">
           <div className="flex flex-row text-xl justify-between py-10 px-20">
