@@ -46,7 +46,7 @@ export default function Details() {
 		<div className="bg-[#1E1E1E] top-0 p-20 font-Lato text-lg">
 			<div className="bg-white text-black flex flex-col gap-9 pt-8 pl-7">
 				<p className="italic underline text-2xl">{details?.name}</p>
-				<div className="flex flex-row gap-7">
+				<div className="flex flex-row flex-wrap gap-7">
 					<img src={details?.imageURL} width={300} height={500} alt="Details" />
 					<ul className="list-disc">
 						<span>Ingredients:</span>
