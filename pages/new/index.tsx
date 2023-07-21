@@ -1,6 +1,10 @@
 import { useState } from "react";
 import UploadPhoto from "../components/uploadPhoto";
+import stateStore from "../components/stateStore";
+import { getCookie } from "cookies-next";
 export default function NewRecipe() {
+	const { token } = stateStore();
+	console.log(token);
 	const [recipe, setRecipe] = useState({
 		name: "",
 		category: "",
@@ -35,13 +39,19 @@ export default function NewRecipe() {
 					: e.target.value;
 				return { ...prevRecipe, [arrayName]: newValue };
 			}
-			const newArray = [...prevRecipe[arrayName as keyof typeof prevRecipe]];
-			const newValue = Array.isArray(e.target.value)
-				? e.target.value
-				: e.target.value;
-			console.log(newValue);
-			newArray[index] = newValue;
-			return { ...prevRecipe, [arrayName]: newArray };
+			if (Array.isArray(prevRecipe[arrayName as keyof typeof prevRecipe])) {
+				const newArray = [...prevRecipe[arrayName as keyof typeof prevRecipe]];
+				const newValue = Array.isArray(e.target.value)
+					? e.target.value
+					: e.target.value;
+				newArray[index] = newValue;
+				return { ...prevRecipe, [arrayName]: newArray };
+			} else {
+				const newValue = Array.isArray(e.target.value)
+					? e.target.value
+					: e.target.value;
+				return { ...prevRecipe, [arrayName]: newValue };
+			}
 		});
 	};
 
@@ -52,11 +62,23 @@ export default function NewRecipe() {
 		}));
 	};
 
-	const postButton = (e: React.SyntheticEvent) => {
+	const postButton = async (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		console.log(recipe);
+		console.log(token);
+		const response = await fetch(
+			"https://expressjs-server-production-934e.up.railway.app/recipe",
+			{
+				method: "POST",
+				headers: {
+					authorization: `Bearer ${getCookie("token")}`,
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(recipe),
+			}
+		);
+		await response.json();
 	};
-	console.log(recipe);
+
 	return (
 		<form className="text-black">
 			<div className="border-solid border-black border-2">
@@ -105,7 +127,7 @@ export default function NewRecipe() {
 					<div key={index} className="border-solid border-black border-2">
 						<input
 							type="text"
-							name="steps"
+							name="step"
 							placeholder={`Step ${index + 1}`}
 							value={step}
 							onChange={handleChange}
@@ -121,7 +143,11 @@ export default function NewRecipe() {
 			>
 				Tambah Langkah
 			</button>
-			<button onClick={postButton}>Simpan</button>
+			<div>
+				<button onClick={postButton} className="bg-white text-black">
+					Simpan
+				</button>
+			</div>
 		</form>
 	);
 }

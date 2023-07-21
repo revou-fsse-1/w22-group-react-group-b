@@ -32,7 +32,7 @@ const Register = () => {
 		});
 		const data = await response.json();
 		if (data) {
-			router.push("/");
+			router.refresh();
 		}
 	};
 
