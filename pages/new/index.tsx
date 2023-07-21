@@ -10,7 +10,7 @@ export default function NewRecipe() {
 	console.log(token);
 	const [recipe, setRecipe] = useState({
 		name: "",
-		category: "",
+		category: "Western",
 		url: "",
 		ingredients: ["", ""],
 		step: ["", ""],
