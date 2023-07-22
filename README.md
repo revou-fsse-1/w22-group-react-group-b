@@ -21,11 +21,18 @@
 
 ## Technologies
 
----
+[![Technologies](https://skillicons.dev/icons?i=html,tailwind,ts,react,next,prisma,postgres&perline=10)](https://skillicons.dev)
 
-- NextJS
-- Tailwind CSS
-- Typescript
-- PrismaORM
-- PostgreSQL
-- Railway
+## Business Potential
+
+- **Free**
+
+Basically this app is free of charge, and can be used by everyone. However we have an paid option as well.
+
+- **Paid**
+
+We have paid option as well for those who want to access limited content. Like the recipe for a special or popular cuisine.
+
+- **Partnership**
+
+We will offer the partnership with the restaurants, coffee or other F&B business, where we can share their recipe to the users, in exchange of promoting their business in our app.
