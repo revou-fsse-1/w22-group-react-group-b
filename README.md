@@ -10,6 +10,7 @@
 
 - Website: [Recipes](http://cookbookrecipes.blog/)
 - Vercel: [Recipes](https://w22-group-react-group-b.vercel.app/)
+- Figma: [Recipes](https://www.figma.com/file/md3JABO7RLkMCeaxWF81Xl/Recipes?type=design&node-id=0-1&mode=design&t=izF9RPcL20NRdlcu-0)
 - GitHub: [Recipes](https://github.com/revou-fsse-1/w22-group-react-group-b)
 
 ## Contributors
