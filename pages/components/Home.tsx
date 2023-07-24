@@ -4,7 +4,7 @@ import { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface NavbarProps {
-	logo: StaticImageData;
+  logo: StaticImageData;
 }
 
 const Navbar = () => {

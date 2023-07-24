@@ -81,8 +81,11 @@ export default function Home() {
 					</Link>
 				</div>
 
-				<CategoryRecipe />
-			</div>
-		</div>
-	);
+        <CategoryRecipe />
+      </div>
+      <footer className="text-[#F5F5F5] font-Lato">
+        <p>© 2023 Recipes. All rights reserved.</p>
+      </footer>
+    </div>
+  );
 }
