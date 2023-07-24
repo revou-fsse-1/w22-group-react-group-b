@@ -1,38 +1,15 @@
-import React, { useState } from "react";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
-import Login from "./Login";
-import Register from "./Register";
-import Modal from "react-modal";
+import Link from "next/link";
 
 interface NavbarProps {
 	logo: StaticImageData;
 }
 
-const Navbar = ({ logo }: NavbarProps) => {
+const Navbar = () => {
 	const scrollToTop = () => {
 		scroll.scrollToTop();
-	};
-
-	const [isLoginModalOpen, setLoginModalOpen] = useState(false);
-
-	const openLoginModal = () => {
-		setLoginModalOpen(true);
-	};
-
-	const closeLoginModal = () => {
-		setLoginModalOpen(false);
-	};
-
-	const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
-
-	const openRegisterModal = () => {
-		setRegisterModalOpen(true);
-	};
-
-	const closeRegisterModal = () => {
-		setRegisterModalOpen(false);
 	};
 
 	return (
@@ -40,7 +17,12 @@ const Navbar = ({ logo }: NavbarProps) => {
 			<nav className="bg-yellow-200 h-screen rounded-xl">
 				<div className="flex items-center justify-between">
 					<div>
-						<Image src={logo} alt="Logo" width={200} height={200} />
+						<Image
+							src="https://i.imgur.com/bF7pZ4u.png"
+							alt="Logo"
+							width={200}
+							height={200}
+						/>
 					</div>
 					<ul className="flex px-10 gap-10">
 						<li>
@@ -81,8 +63,8 @@ const Navbar = ({ logo }: NavbarProps) => {
 						</li>
 
 						<li>
-							<a
-								onClick={openLoginModal}
+							<Link
+								href="/login"
 								className="cursor-pointer font-Lato"
 								style={{
 									color: "#181823",
@@ -108,7 +90,7 @@ const Navbar = ({ logo }: NavbarProps) => {
 								}}
 							>
 								Login
-							</a>
+							</Link>
 						</li>
 					</ul>
 				</div>
@@ -148,8 +130,8 @@ const Navbar = ({ logo }: NavbarProps) => {
 							food enthusiasts, share your own recipes, and learn from
 							others.&quot;
 						</p>
-						<a
-							onClick={openRegisterModal}
+						<Link
+							href="/register"
 							className="cursor-pointer font-Lato"
 							style={{
 								color: "#181823",
@@ -176,12 +158,12 @@ const Navbar = ({ logo }: NavbarProps) => {
 							}}
 						>
 							Register Here!
-						</a>
+						</Link>
 					</div>
 					<div className="flex items-center w-1/2">
 						<div className="justify-center">
 							<Image
-								src="/home-img.png"
+								src="https://i.imgur.com/1s5dbPv.png"
 								alt="Home"
 								width={1000}
 								height={1000}
@@ -190,22 +172,6 @@ const Navbar = ({ logo }: NavbarProps) => {
 					</div>
 				</div>
 			</nav>
-
-			<Modal
-				isOpen={isLoginModalOpen}
-				onRequestClose={closeLoginModal}
-				contentLabel="Login Modal"
-			>
-				<Login />
-			</Modal>
-
-			<Modal
-				isOpen={isRegisterModalOpen}
-				onRequestClose={closeRegisterModal}
-				contentLabel="Register Modal"
-			>
-				<Register />
-			</Modal>
 		</div>
 	);
 };

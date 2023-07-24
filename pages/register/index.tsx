@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
-import { useRouter } from "next/router";
-import { setCookie } from "cookies-next";
-const Login = () => {
-	const APIURL =
-		"https://expressjs-server-production-934e.up.railway.app/auth/login";
-	const router = useRouter();
+import { useRouter } from "next/navigation";
 
+const Register = () => {
+	const APIURL =
+		"https://expressjs-server-production-934e.up.railway.app/auth/register";
+	const router = useRouter();
 	const [credentials, setCredentials] = useState({
 		username: "",
 		password: "",
 	});
 
-	const handleLogin = async () => {
+	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+		setCredentials((prevCredential) => ({
+			...prevCredential,
+			[event.target.name]: event.target.value,
+		}));
+	}
+
+	const handleRegister = async () => {
 		const response = await fetch(APIURL, {
 			method: "POST",
 			headers: {
@@ -26,20 +32,9 @@ const Login = () => {
 		});
 		const data = await response.json();
 		if (data) {
-			const tokenString: string = String(await data.access_token);
-			const userID: string = String(await data.userID);
-			setCookie("token", tokenString);
-			setCookie("id", userID);
-			router.push("/home");
+			router.refresh();
 		}
 	};
-
-	function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-		setCredentials((prevCredential) => ({
-			...prevCredential,
-			[event.target.name]: event.target.value,
-		}));
-	}
 
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
@@ -53,7 +48,7 @@ const Login = () => {
 			<div className="flex bg-white rounded-xl shadow items-center justify-center">
 				<div className="w-1/2 px-8 py-12">
 					<Image
-						src="/recipeslogo.png"
+						src="https://i.imgur.com/bF7pZ4u.png"
 						alt="Logo-login"
 						width={200}
 						height={200}
@@ -86,16 +81,16 @@ const Login = () => {
 						<button
 							className="bg-yellow-200 hover:bg-yellow-300 text-black py-2 px-4 rounded-xl w-full shadow-xl font-bold"
 							type="button"
-							onClick={handleLogin}
+							onClick={handleRegister}
 						>
-							Login
+							Register
 						</button>
 					</form>
 				</div>
 				<div className="w-1/2 border-l">
 					<Image
-						src="/loginpage-img.jpg"
-						alt="Login"
+						src="/registerspage-img.jpg"
+						alt="Register"
 						width={500}
 						height={500}
 						objectFit="content"
@@ -107,4 +102,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Register;
