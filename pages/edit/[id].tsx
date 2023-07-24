@@ -110,7 +110,12 @@ export default function NewRecipe() {
 		<div className="flex items-center justify-center">
 			<div className="p-3 bg-yellow-200 rounded-md w-[100%]">
 				<div className="flex justify-center flex-col items-center">
-					<Image src="/recipeslogo.png" alt="Logo" width={200} height={200} />
+					<Image
+						src="https://i.imgur.com/bF7pZ4u.png"
+						alt="Logo"
+						width={200}
+						height={200}
+					/>
 					<div className="p-3 font-Lato font-bold text-lg">
 						Please Submit Your Recipe!
 					</div>
