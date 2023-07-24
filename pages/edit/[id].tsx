@@ -116,12 +116,12 @@ export default function NewRecipe() {
 						width={200}
 						height={200}
 					/>
-					<div className="p-3 font-Lato font-bold text-lg">
+					<div className="p-3  font-bold text-lg">
 						Please Submit Your Recipe!
 					</div>
 				</div>
 
-				<form className="text-black space-y-4 font-Lato">
+				<form className="text-black space-y-4 ">
 					<div className="border-solid border-black border-2 p-2 bg-white rounded-md">
 						<input
 							type="text"
@@ -165,7 +165,7 @@ export default function NewRecipe() {
 					))}
 					<button
 						onClick={(e: React.SyntheticEvent) => addItem(e, "ingredients")}
-						className="cursor-pointer font-Lato"
+						className="cursor-pointer "
 						style={{
 							color: "#181823",
 							backgroundColor: "#F5F5F5",
@@ -212,7 +212,7 @@ export default function NewRecipe() {
 					))}
 					<button
 						onClick={(e: React.SyntheticEvent) => addItem(e, "step")}
-						className="cursor-pointer font-Lato"
+						className="cursor-pointer "
 						style={{
 							color: "#181823",
 							backgroundColor: "#F5F5F5",
@@ -244,7 +244,7 @@ export default function NewRecipe() {
 					<div>
 						<button
 							onClick={postButton}
-							className="cursor-pointer font-Lato"
+							className="cursor-pointer "
 							style={{
 								color: "#181823",
 								backgroundColor: "#F5F5F5",

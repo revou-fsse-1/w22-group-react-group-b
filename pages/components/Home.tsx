@@ -4,7 +4,7 @@ import { StaticImageData } from "next/image";
 import Link from "next/link";
 
 interface NavbarProps {
-  logo: StaticImageData;
+	logo: StaticImageData;
 }
 
 const Navbar = () => {
@@ -34,7 +34,7 @@ const Navbar = () => {
 								duration={500}
 								onClick={scrollToTop}
 								href="#"
-								className="cursor-pointer font-Lato"
+								className="cursor-pointer "
 								style={{
 									color: "#181823",
 									backgroundColor: "#F5F5F5",
@@ -65,7 +65,7 @@ const Navbar = () => {
 						<li>
 							<Link
 								href="/login"
-								className="cursor-pointer font-Lato"
+								className="cursor-pointer "
 								style={{
 									color: "#181823",
 									backgroundColor: "#F5F5F5",
@@ -97,7 +97,7 @@ const Navbar = () => {
 				<div className="flex items-center justify-between p-10">
 					<div className="w-1/2">
 						<h1
-							className="py-2 font-Lato"
+							className="py-2 "
 							style={{
 								color: "#F5F5F5",
 								fontWeight: 900,
@@ -120,7 +120,7 @@ const Navbar = () => {
 							</span>
 						</h1>
 
-						<p className="py-5 text-justify font-Lato font-bold italic">
+						<p className="py-5 text-justify  font-bold italic">
 							&quot;Welcome to our Recipes Blog! Discover a world of culinary
 							excellence with our collection of professional-grade recipes. Join
 							us to explore a diverse range of dishes, from appetizers to
@@ -132,7 +132,7 @@ const Navbar = () => {
 						</p>
 						<Link
 							href="/register"
-							className="cursor-pointer font-Lato"
+							className="cursor-pointer "
 							style={{
 								color: "#181823",
 								backgroundColor: "#F5F5F5",

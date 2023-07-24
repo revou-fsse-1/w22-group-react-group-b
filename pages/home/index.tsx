@@ -23,7 +23,7 @@ export default function Home() {
 					/>
 					<a
 						onClick={logOutButton}
-						className="cursor-pointer font-Lato w-fit h-fit items-center"
+						className="cursor-pointer  w-fit h-fit items-center"
 						style={{
 							color: "#181823",
 							backgroundColor: "#F5F5F5",
@@ -53,7 +53,7 @@ export default function Home() {
 				<div className="w-fit mt-16">
 					<Link
 						href="/new"
-						className="cursor-pointer font-Lato h-fit"
+						className="cursor-pointer  h-fit"
 						style={{
 							color: "#181823",
 							backgroundColor: "#F5F5F5",
@@ -81,11 +81,11 @@ export default function Home() {
 					</Link>
 				</div>
 
-        <CategoryRecipe />
-      </div>
-      <footer className="text-[#F5F5F5] font-Lato">
-        <p>© 2023 Recipes. All rights reserved.</p>
-      </footer>
-    </div>
-  );
+				<CategoryRecipe />
+			</div>
+			<footer className="text-[#F5F5F5] ">
+				<p>© 2023 Recipes. All rights reserved.</p>
+			</footer>
+		</div>
+	);
 }
